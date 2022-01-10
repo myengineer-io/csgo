@@ -50,4 +50,6 @@ COPY --chown=steam:steam containerfs ${STEAM_DIR}/
 USER steam
 WORKDIR ${CSGO_DIR}
 VOLUME ${CSGO_DIR}
+RUN sed -i -e 's/\r$//' ${STEAM_DIR}/start.sh
+RUN sed -i -e 's/\r$//' ${STEAM_DIR}/manage_plugins.sh
 ENTRYPOINT exec ${STEAM_DIR}/start.sh
