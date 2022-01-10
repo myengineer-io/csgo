@@ -4,8 +4,6 @@ set -ueo pipefail
 
 : "${CSGO_DIR:?'ERROR: CSGO_DIR IS NOT SET!'}"
 
-export RETAKES="${RETAKES:-0}"
-
 INSTALL_PLUGINS="${INSTALL_PLUGINS:-https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git971-linux.tar.gz
 https://sm.alliedmods.net/smdrop/1.10/sourcemod-1.10.0-git6478-linux.tar.gz
 http://users.alliedmods.net/~kyles/builds/SteamWorks/SteamWorks-git131-linux.tar.gz
@@ -93,24 +91,3 @@ done
 
 PLUGINS_ENABLED_DIR="$CSGO_DIR/csgo/addons/sourcemod/plugins"
 PLUGINS_DISABLED_DIR="$CSGO_DIR/csgo/addons/sourcemod/plugins/disabled"
-
-# Disable Retakes by default so that we have a working and predictable state without plugins conflict
-if [[ -f "$PLUGINS_ENABLED_DIR"/retakes.smx ]]; then
-  mv "$PLUGINS_ENABLED_DIR"/retakes*.smx "$PLUGINS_DISABLED_DIR"/
-fi
-
-if [ "$RETAKES" = "1" ]; then
-  if [[ -f "$PLUGINS_ENABLED_DIR"/pugsetup.smx ]]; then
-    (cd "$PLUGINS_ENABLED_DIR" && mv pugsetup*.smx "$PLUGINS_DISABLED_DIR")
-    echo "Disabled PugSetup plugins"
-  fi
-  # shellcheck disable=SC2086
-  (cd "$PLUGINS_DISABLED_DIR" && mv $RETAKES_PLUGINS "$PLUGINS_ENABLED_DIR")
-  echo "Enabled Retakes plugins"
-else
-  if [[ -f "$PLUGINS_DISABLED_DIR"/pugsetup.smx ]]; then
-    # shellcheck disable=SC2086
-    (cd "$PLUGINS_DISABLED_DIR" && mv $PUGSETUP_PLUGINS "$PLUGINS_ENABLED_DIR")
-    echo "Enabled PugSetup plugins"
-  fi
-fi

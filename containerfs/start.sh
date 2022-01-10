@@ -50,7 +50,6 @@ export MAXPLAYERS="${MAXPLAYERS:-12}"
 export TV_ENABLE="${TV_ENABLE:-1}"
 export LAN="${LAN:-0}"
 set_env_from_file_or_def 'SOURCEMOD_ADMINS'
-export RETAKES="${RETAKES:-0}"
 export ANNOUNCEMENT_IP="${ANNOUNCEMENT_IP:-}"
 export NOMASTER="${NOMASTER:-}"
 
@@ -108,9 +107,6 @@ fi
 
 # Install and configure plugins & extensions
 "$BASH" "$STEAM_DIR/manage_plugins.sh"
-
-# Update PugSetup configuration via environment variables
-"$BASH" "$STEAM_DIR/manage_pugsetup_configs.sh"
 
 SRCDS_ARGUMENTS=(
   "-console"
