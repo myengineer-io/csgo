@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
  
 # These envvars should've been set by the Dockerfile
 # If they're not set then something went wrong during the build
