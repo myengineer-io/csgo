@@ -10,12 +10,6 @@ INSTALL_PLUGINS="${INSTALL_PLUGINS:-https://mms.alliedmods.net/mmsdrop/1.10/mmso
 https://sm.alliedmods.net/smdrop/1.10/sourcemod-1.10.0-git6478-linux.tar.gz
 http://users.alliedmods.net/~kyles/builds/SteamWorks/SteamWorks-git131-linux.tar.gz
 https://bitbucket.org/GoD_Tony/updater/downloads/updater.smx
-https://github.com/splewis/csgo-practice-mode/releases/download/1.3.3/practicemode_1.3.3.zip
-https://github.com/splewis/csgo-pug-setup/releases/download/2.0.5/pugsetup_2.0.5.zip
-https://github.com/splewis/csgo-retakes/releases/download/v0.3.4/retakes_0.3.4.zip
-https://github.com/b3none/retakes-instadefuse/releases/download/1.4.0/retakes-instadefuse.smx
-https://github.com/b3none/retakes-autoplant/releases/download/2.3.0/retakes_autoplant.smx
-https://github.com/b3none/retakes-hud/releases/download/2.2.5/retakes-hud.smx
 }"
 
 get_checksum_from_string () {
@@ -99,8 +93,6 @@ done
 
 PLUGINS_ENABLED_DIR="$CSGO_DIR/csgo/addons/sourcemod/plugins"
 PLUGINS_DISABLED_DIR="$CSGO_DIR/csgo/addons/sourcemod/plugins/disabled"
-RETAKES_PLUGINS="retakes.smx retakes-instadefuse.smx retakes_autoplant.smx retakes-hud.smx retakes_standardallocator.smx"
-PUGSETUP_PLUGINS="pugsetup.smx pugsetup_teamnames.smx pugsetup_damageprint.smx"
 
 # Disable Retakes by default so that we have a working and predictable state without plugins conflict
 if [[ -f "$PLUGINS_ENABLED_DIR"/retakes.smx ]]; then
